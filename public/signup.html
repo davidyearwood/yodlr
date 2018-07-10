@@ -3,14 +3,26 @@
 <head>
   <meta charset=utf-8>
   <title>Yodlr Registration Portal</title>
+  <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
-  <h1>Yodlr Registration Portal</h1>
-  <form>
-    Email: <input type="email" name="email"></br>
-    <button type="submit">Submit</button>
-  </form>
-  <p>
+  <div class="container--form">
+    <img src="img/yodlr.svg" alt="" class="logo--signup">
+    <form method="POST" action="/users">
+      <label for="first-name">First Name:</label>
+      <input type="text" id="first-name" name="firstName">
+      
+      <label for="last-name">Last Name:</label>
+      <input type="text" id="last-name" name="lastName">
+      
+      <label for="email">Email: </label>
+      <input type="email" name="email">
+      
+      
+      <button type="submit" class="btn" style="margin-top: 24px">Submit</button>
+    </form>
+  </div>
+  <p class="center-text">
     <a href="/admin.html">Admin Page</a>
   </p>
 </body>

@@ -3,8 +3,39 @@
 <head>
   <meta charset=utf-8>
   <title>Yodlr Admin Page</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
 </head>
 <body>
-  List user data here
+    <div class="container">
+      <aside class="side-navigation">
+        <img class="logo" src="img/yodlr_ap.svg"></img>
+        
+        <section class="manage-users">
+          <header class="list-header">
+            <h2>Manage Users</h2>
+          </header>
+          <ul class="list">
+            <li><a href="#">Users' Data Table</a></li>
+            <li><a href="#">Create new user</a></li>
+          </ul>
+        </section>
+        
+      </aside>
+    
+    <div id="users-data" style="background: #fff; width: 70%;"></div>
+  </div>
+
+  <!--<script src="js/UserController.js"></script>-->
+  <script src="js/Model.js"></script>
+  <script src="js/components/users_table/UserTableComponent.js"></script>
+  <script src="js/util/Render.js"></script>
+  <script>
+    var UserModel = new Model({ resource: '/users' }); 
+    
+    UserModel.get().then(UserTableComponent.createTable).then(render('#users-data'));
+  </script>
 </body>
 </html>

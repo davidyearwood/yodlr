@@ -1,0 +1,9 @@
+@mixin flush-margin-padding() {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin flush-margin-top-bottom() {
+    margin-top: 0;
+    margin-bottom: 0;
+}

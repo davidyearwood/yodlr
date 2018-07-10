@@ -1,0 +1,14 @@
+.account {
+    font-family: $sans-serif;
+    &__summary {
+        @include flush-margin-padding();
+        display: inline-block;
+        margin-left: 4.5px;
+        vertical-align: middle;
+    }
+    &__name {
+        display: block;
+        font-weight: 500;
+        font-size: 1.25em;
+    }
+}

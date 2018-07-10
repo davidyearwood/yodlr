@@ -1,0 +1,23 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link href="test/vendor/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="mocha" style="background-color: #eee;"></div>
+  <div class="test"></div>
+  <script src="https://cdn.jsdelivr.net/npm/sinon@3/pkg/sinon.js"></script>
+  <script src="test/vendor/mocha.js"></script>
+  <script src="test/vendor/chai.js"></script>
+  <script>mocha.setup('bdd')</script>
+  
+  <script src="js/components/users_table/UserTableComponent.js"></script>
+  <script src="js/TableComponent.js"></script>
+  <script src="test/TableComponent.test.js"></script>
+  <script>
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
+</body>
+</html>

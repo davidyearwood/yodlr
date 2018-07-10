@@ -1,0 +1,11 @@
+img.logo {
+    max-width: 170px;
+    width: 100%;
+}
+
+.logo--signup {
+    @include center-block(); 
+    
+    max-width: 250px;
+    width: 100%;
+}

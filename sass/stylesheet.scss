@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #FAFAFA;
+}
+
+@import 'config';
+@import 'typography'; 
+
+@import 'util/center-text'; 
+
+@import 'mixins/flush';
+@import 'mixins/center-block';
+
+@import 'atoms/input';
+@import 'atoms/label';
+
+@import 'molecules/logo'; 
+@import 'molecules/data-table';
+@import 'molecules/list';
+@import 'molecules/btn';
+
+@import 'layout/container';
+@import 'layout/side-navigation';
+
+#users-data {
+    background: #fff;
+    width: 70%;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}

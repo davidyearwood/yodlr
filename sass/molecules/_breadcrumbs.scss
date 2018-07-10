@@ -1,0 +1,25 @@
+.breadcrumbs {
+    @include flush-margin-padding();
+    list-style-type: none;
+}
+
+.breadcrumbs li {
+    display: inline;
+}
+
+.breadcrumbs li::after {
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    content: "\f054";
+    margin-right: 8px;
+    margin-left: 8px;
+    font-size: 0.8em;
+}
+
+.breadcrumbs li:last-child::after {
+    content: "";
+}
+
+.breadcrumbs {
+    font-family: $sans-serif;
+}
