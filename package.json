@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node index.js",
     "sass-watch": "sass --watch sass/stylesheet.scss:public/css/stylesheet.css",
-    "test": "jest"
+    "test": "jest",
+    "babel-watch": "./node_modules/.bin/babel --watch src -d public/js"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
@@ -14,15 +15,35 @@
     "express": "~4.9.0",
     "express-winston": "^0.2.9",
     "lodash": "^2.4.1",
+    "prop-types": "^15.6.2",
     "serve-favicon": "~2.1.3",
     "winston": "^0.8.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
     "fetch-mock": "^6.4.4",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
     "request": "^2.34.0",
     "sinon": "^6.0.1"
-  }
+  },
+  "description": "Yodlr Front End Engineer Code/Design Challenge =======================",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yodlr/frontend-code-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yodlr/frontend-code-challenge/issues"
+  },
+  "homepage": "https://github.com/yodlr/frontend-code-challenge#readme"
 }
