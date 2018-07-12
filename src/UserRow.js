@@ -1,3 +1,4 @@
+import React from 'react';
 const UserRow = props => {
     return (
         <tr>
@@ -9,3 +10,5 @@ const UserRow = props => {
         </tr>
   );
 };
+
+export default UserRow; 

@@ -1,8 +1,11 @@
+import React from 'react';
 import UserRow from './UserRow';
+
 const UserRowList = props => {
-    let rows = props.users.map(user => {
+    let rows = props.users.map((user, index) => {
         return (
             <UserRow 
+                key={index}
                 id={user.id} 
                 email={user.email}
                 firstName={user.firstName}
@@ -11,4 +14,8 @@ const UserRowList = props => {
             />
         );
     });
+    
+    return rows; 
 };
+
+export default UserRowList;

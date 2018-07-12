@@ -5,9 +5,15 @@
   <title>Yodlr Admin Page</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  
   <!-- CSS Stylesheet --> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+  
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>-->
+  <!--<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
   
 </head>
 <body>
@@ -26,16 +32,8 @@
         </section>
         
       </aside>
-    <div id="users-data" style="background: #fff; width: 70%;"></div>
+    <div id="root"></div>
+    <script src="js/main.js"></script>
   </div>
-  <script src="js/UserController.js"></script>
-  <script src="js/Model.js"></script>
-  <script src="js/components/users_table/UserTableComponent.js"></script>
-  <script src="js/util/Render.js"></script>
-  <script>
-    var UserModel = new Model({ resource: '/users' }); 
-    
-    UserModel.get().then(UserTableComponent.createTable).then(render('#users-data'));
-  </script>
 </body>
 </html>
