@@ -2,9 +2,12 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/test.js',
+  entry: {
+    main: './src/main.js',
+    register: './src/register-app.js'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'public/js')
   },
   module: {
@@ -12,7 +15,7 @@ module.exports = {
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
-          use: "babel-loader"
+          use: "babel-loader",
         }
       ]
     }

@@ -4,26 +4,18 @@
   <meta charset=utf-8>
   <title>Yodlr Registration Portal</title>
   <link rel="stylesheet" href="css/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
 </head>
 <body>
   <div class="container--form">
-    <img src="img/yodlr.svg" alt="" class="logo--signup">
-    <form method="POST" action="/users">
-      <label for="first-name">First Name:</label>
-      <input type="text" id="first-name" name="firstName">
-      
-      <label for="last-name">Last Name:</label>
-      <input type="text" id="last-name" name="lastName">
-      
-      <label for="email">Email: </label>
-      <input type="email" name="email">
-      
-      
-      <button type="submit" class="btn" style="margin-top: 24px">Submit</button>
-    </form>
+    <!--<img src="img/yodlr.svg" alt="" class="logo--signup">-->
+    <div id="app"></div>
   </div>
   <p class="center-text">
     <a href="/admin.html">Admin Page</a>
   </p>
+  
+  <script type="text/javascript" src="js/register.js"></script>
 </body>
 </html>
