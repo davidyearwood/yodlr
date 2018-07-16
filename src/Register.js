@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import validator from 'validator'; 
+import TextField from './TextField';
+import EmailField from './EmailField';
 
 class Register extends React.Component {
     constructor(props) {
@@ -10,18 +12,19 @@ class Register extends React.Component {
             firstName: {
                 value: '', 
                 hasError: true,
-                message: 'This field is required.'
+                message: ''
             },
             lastName: {
                 value: '',
                 hasError: true,
-                message: 'This field is required.'
+                message: ''
             }, 
             email: {
                 value: '',
                 hasError: true,
-                message: 'This field is required.'
+                message: ''
             },
+            inputClass: 'text-field__input',
             hasError: null,
             isSubmit: false, 
             isLoading: false
@@ -89,6 +92,9 @@ class Register extends React.Component {
         if (!this.state.firstName.hasError && !this.state.lastName.hasError && !this.state.email.hasError) {
             this.postData("/users", userData)
                 .then(response => { console.log(response); });
+            this.setState({
+                isSubmit: true
+            }); 
         } else {
             console.error(this.state.firstName.message);
             console.error(this.state.lastName.message);
@@ -101,15 +107,17 @@ class Register extends React.Component {
         let email = this.state.email.value;
         let message = '';
         let hasError = false; 
-        
+        let className = 'text-field__input';
         if (!validator.isEmail(email)) {
             message = 'Invalid email.'; 
             hasError = true; 
+            className = className + ' ' + 'text-field__input--error';
         }
         
         if (validator.isEmpty(email)) {
             message = 'Email field is required.'
             hasError = true; 
+            className = className + ' ' + 'text-field__input--error';
         }
         
         this.setState({
@@ -117,7 +125,8 @@ class Register extends React.Component {
                 ...this.state.email,
                 message: message, 
                 hasError: hasError
-            }
+            },
+            inputClass: className
         });
     }
     
@@ -125,15 +134,18 @@ class Register extends React.Component {
         let lastName = this.state.lastName.value; 
         let message = '';
         let hasError = false; 
-    
+        let className = 'text-field__input';
+        
         if (!validator.isAlphanumeric(lastName)) {
             message = 'Last name can only include alphanumeric characters.';
             hasError = true; 
+            className = className + ' ' + 'text-field__input--error';
         }
         
         if(validator.isEmpty(lastName)) {
             message = 'Last name field is required.';
             hasError = true; 
+            className = className + ' ' + 'text-field__input--error';
         }
         
         this.setState({
@@ -141,7 +153,8 @@ class Register extends React.Component {
                 ...this.state.lastName,
                 message: message, 
                 hasError: hasError
-            }
+            },
+            inputClass: className
         });
     }
     
@@ -149,15 +162,18 @@ class Register extends React.Component {
         var firstName = this.state.firstName.value; 
         var message = '';
         var hasError = false; 
+        var className = 'text-field__input'
         
         if (!validator.isAlphanumeric(firstName)) {
             message = 'First name can only include alphanumeric characters.';
-            hasError = true; 
+            hasError = true;
+            className = className + ' ' + 'text-field__input--error';
         }
         
         if(validator.isEmpty(firstName)) {
             message = 'First name is required.';
             hasError = true; 
+            className = className + ' ' + 'text-field__input--error';
         }
         
         this.setState({
@@ -165,40 +181,53 @@ class Register extends React.Component {
                 ...this.state.firstName,
                 message: message, 
                 hasError: hasError
-            }
+            },
+            inputClass: className
         });
         
     }
     
     render() {
-        return (
-            <form onSubmit={this.registerUser} noValidate>
-                <Input clasName="first-name"
-                    name="firstName"
-                    usersInput={this.state.firstName.value}
+        let regForm = (
+           <form onSubmit={this.registerUser} noValidate>
+                <TextField 
+                    id="first-name"
+                    value={this.state.firstName.value}
                     onChange={this.updateFirstName}
                     onBlur={this.checkFirstNameValidity}
                     labelText="First Name:"
+                    inputClassName={this.state.inputClass}
                 />
-                <Input 
-                    labelText="Last Name:"
-                    clasName="last-name"
-                    name="lastName"
-                    onBlur={this.checkLastNameValidity}
-                    usersInput={this.state.lastName.value}
+                <TextField 
+                    id="last-name"
+                    value={this.state.lastName.value}
                     onChange={this.updateLastName}
+                    onBlur={this.checkLastNameValidity}
+                    labelText="Last Name:"
+                    inputClassName={this.state.inputClass}
                 />
-                <Input 
-                    className="email"
-                    name="email"
+                <EmailField
+                    id="email"
                     labelText="Email: "
                     onChange={this.updateEmail}
                     onBlur={this.checkEmailValidity}
-                    usersInput={this.state.email.value}
-                    type="email"
+                    value={this.state.email.value}
+                    inputClassName={this.state.inputClass}
                 />
-                <button type="submit" className="btn">Submit</button>
-            </form>
+                { this.state.firstName.hasError || this.state.lastName.hasError || this.state.email.hasError ? (
+                    <button type="submit" className="btn" disabled>Submit</button>
+                ) : (
+                    <button type="submit" className="btn">Submit</button>
+                )}
+            </form>  
+        );
+        
+        let submit = (<h1>{this.state.firstName.value} that wasn't too bad? Right :D </h1>);
+        let app = this.state.isSubmit ? submit : regForm; 
+        return (
+            <div> 
+                {app}
+            </div>
         );
     }
 } 

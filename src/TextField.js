@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 const TextField = props => {
   return (
     <div className={props.containerClassName}>
-        <label htmlFor={props.id}>{props.labelText}</label> 
+        <label htmlFor={props.id} className={props.labelClassName}>{props.labelText}</label> 
         <input 
             type="text"
             id={props.id}
             value={props.value}
             onChange={props.onChange}
             onBlur={props.onBlur}
+            className={props.inputClassName}
         />
     </div>
     );   
