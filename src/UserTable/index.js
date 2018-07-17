@@ -1,5 +1,6 @@
 import React from 'react';
 import UserRowList from './UserRowList';
+import UserHeaderList from './UserHeaderList';
 
 class UserTable extends React.Component {
     constructor(props) {
@@ -42,6 +43,9 @@ class UserTable extends React.Component {
         
         return (
             <table className="data-table">
+                <thead>
+                    <UserHeaderList users={this.state.users} />
+                </thead>
                 <tbody>
                     <UserRowList users={this.state.users}/>
                 </tbody>

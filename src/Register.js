@@ -4,6 +4,7 @@ import Input from './Input';
 import validator from 'validator'; 
 import TextField from './TextField';
 import EmailField from './EmailField';
+import Message from './Message';
 
 class Register extends React.Component {
     constructor(props) {
@@ -224,6 +225,7 @@ class Register extends React.Component {
         
         let submit = (<h1>{this.state.firstName.value} that wasn't too bad? Right :D </h1>);
         let app = this.state.isSubmit ? submit : regForm; 
+        
         return (
             <div> 
                 {app}
