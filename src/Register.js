@@ -5,6 +5,7 @@ import validator from 'validator';
 import TextField from './TextField';
 import EmailField from './EmailField';
 import Message from './Message';
+import {postRequest} from './Request';
 
 class Register extends React.Component {
     constructor(props) {
@@ -61,21 +62,6 @@ class Register extends React.Component {
         this.update("email", e);
     }
     
-    postData(url, data) {
-        return fetch(url, {
-            method: "POST", 
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .catch(error => this.setState({hasError: error}));
-    }
-    
     registerUser(e) {
         e.preventDefault(); 
         
@@ -91,7 +77,7 @@ class Register extends React.Component {
         };
         
         if (!this.state.firstName.hasError && !this.state.lastName.hasError && !this.state.email.hasError) {
-            this.postData("/users", userData)
+            postRequest("/users", userData)
                 .then(response => { console.log(response); });
             this.setState({
                 isSubmit: true
