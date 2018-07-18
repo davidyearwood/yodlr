@@ -188,9 +188,9 @@ class Register extends React.Component {
         
     }
     
-    render() {
-        let regForm = (
-           <form onSubmit={this.registerUser} noValidate>
+    getRegistrationForm() {
+        return (
+            <form onSubmit={this.registerUser} noValidate>
                 <TextField 
                     id="first-name"
                     value={this.state.firstName.value}
@@ -222,12 +222,16 @@ class Register extends React.Component {
                 )}
             </form>  
         );
-        
+    }
+    
+    render() {
+        let registrationForm = this.getRegistrationForm(); 
         let submit = (<h1>{this.state.firstName.value} that wasn't too bad? Right :D </h1>);
-        let app = this.state.isSubmit ? submit : regForm; 
+        
+        let app = this.state.isSubmit ? submit : registrationForm; 
         
         return (
-            <div> 
+            <div className="registration-app"> 
                 {app}
             </div>
         );
